@@ -18,7 +18,7 @@ commands = {
 }
 
 menu = types.ReplyKeyboardMarkup()
-menu.add("RPinfo", "Camara")
+menu.add("RPinfo", "Camara", "OTROS")
 
 cam_menu = types.ReplyKeyboardMarkup()
 cam_menu.add("Foto", "Timelapse")
@@ -111,6 +111,9 @@ def main_menu(m):
     elif text == "Camara":  # CAMARA
         bot.send_message(cid, "Opciones de la camara:", reply_markup=cam_menu)
         userStep[cid] = 2
+    elif text == "Camara":  # OTROS
+        bot.send_message(cid, "Opciones de la camara:", reply_markup=cam_menu)
+        userStep[cid] = 3    
     elif text == "Atras":  # ATRAS
         userStep[cid] = 0
         bot.send_message(cid, "Menu Principal:", reply_markup=menu)
