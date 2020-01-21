@@ -29,6 +29,8 @@ info_menu.add("TEMP", "HD")
 info_menu.add("RAM", "CPU")
 info_menu.add("Atras")
 
+otro_menu = types.ReplyKeyboardMarkup()
+otro_menu.add("IP")
 
 # COLOR TEXTO
 class color:
@@ -112,7 +114,7 @@ def main_menu(m):
         bot.send_message(cid, "Opciones de la camara:", reply_markup=cam_menu)
         userStep[cid] = 2
     elif text == "Camara":  # OTROS
-        bot.send_message(cid, "Opciones de la camara:", reply_markup=cam_menu)
+        bot.send_message(cid, "Opciones de la camara:", reply_markup=otro_menu)
         userStep[cid] = 3    
     elif text == "Atras":  # ATRAS
         userStep[cid] = 0
@@ -171,6 +173,16 @@ def info_opt(m):
             command_text(m)
 
 
+# OTRO MENU
+@bot.message_handler(func=lambda message: get_user_step(message.chat.id) == 1)
+def info_opt(m):
+        cid = m.chat.id
+        txt = m.text
+        if txt == "IP":  # IP
+        bot.send_message(cid, "Buscando IP ...")
+        time.sleep(2)
+        
+            
 # MENU CAMARA
 @bot.message_handler(func=lambda message: get_user_step(message.chat.id) == 2)
 def cam_opt(m):
