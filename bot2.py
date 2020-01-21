@@ -85,6 +85,14 @@ def command_help(m):
         help_text += commands[key] + "\n"
     bot.send_message(cid, help_text)
 
+# OTRO MENU
+@bot.message_handler(func=lambda message: get_user_step(message.chat.id) == 1)
+def info_opt(m):
+        cid = m.chat.id
+        txt = m.text
+        if txt == "IP":  # IP
+        bot.send_message(cid, "Buscando IP ...")
+        time.sleep(2)
 
 # EXEC COMANDO
 @bot.message_handler(commands=['exec'])
@@ -173,15 +181,7 @@ def info_opt(m):
             command_text(m)
 
 
-# OTRO MENU
-@bot.message_handler(func=lambda message: get_user_step(message.chat.id) == 1)
-def info_opt(m):
-        cid = m.chat.id
-        txt = m.text
-        if txt == "IP":  # IP
-        bot.send_message(cid, "Buscando IP ...")
-        time.sleep(2)
-        
+      
             
 # MENU CAMARA
 @bot.message_handler(func=lambda message: get_user_step(message.chat.id) == 2)
